@@ -19,21 +19,4 @@ export const Header = styled.h1`
     text-align: center;
     border-bottom: 1px solid #444;
     padding-bottom: 20px;
-    font-size: 16px;
-`;
-
-export const Navegation = styled.nav`
-    // display: grid;
-
-    a {
-        color: white;
-        text-decoration: none;
-        display: center;
-        margin: 0px 5px 0px 5px;
-    }
-
-    :hover {
-        text-decoration: none;
-        color: #ccc;
-    }
 `;

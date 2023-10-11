@@ -1,44 +1,44 @@
-import { useState } from 'react';
-import { Item } from './types/item';
+import { useContext } from 'react';
+import { Route, Routes, Link } from 'react-router-dom';
+import { Home } from './Pages/Home/';
+import { Login } from './Pages/Login/login';
+import { Private } from './Pages/TodoList';
 
 //styles
 import { 
     Container,
     Area, 
     Header,
+    Navegation,
 } from './App.styles';
-
-//importando os componentes
-import { AddArea } from './components/AddArea';
-import { ListItem } from './components/ListItem';
-
+import { RequireAuth } from './contexts/Auth/RequireAuth';
+import { AuthContext } from './contexts/Auth/AuthContext';
 
 // main
-const App = () => {
+function App() {
 
-  const [list, setList] = useState<Item[]>([]);
+  const auth = useContext(AuthContext);
 
-  const handleAddTask = (taskName: string) => {
-    let newList = [...list];
-    newList.push({
-      id: list.length + 1,
-      name: taskName,
-      done: false,
-    });
-    setList(newList);
+  const handleLogout = async () => {
+    await auth.signout();
+    window.location.href = window.location.href;
   }
 
   return (
     <Container>
       <Area>
         <Header>
-          Lista de Tarefas
+          <Navegation>
+            <Link to="/">Home</Link>
+            <Link to="/login">Lista de Tarefas</Link>
+            {auth.user && <button onClick={handleLogout}>Sair</button>}
+          </Navegation>
         </Header>
-        <AddArea onEnter={handleAddTask} />
-        {list.map((item, index)=>(
-          <ListItem key={index} item={item} />
-        ))}
       </Area>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<RequireAuth><Private /></RequireAuth>} />
+      </Routes>
     </Container>
   );
 }
