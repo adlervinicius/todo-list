@@ -19,6 +19,7 @@ export const Private = () => {
   const auth = useContext(AuthContext)
   const [list, setList] = useState<Item[]>([]);
 
+  //function add new item list
   const handleAddTask = (taskName: string) => {
     let newList = [...list];
     newList.push({
@@ -29,6 +30,7 @@ export const Private = () => {
     setList(newList);
   }
 
+  //main
   return (
     <Container>
       <Area>

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
     background-color: #17181f;
     color: #797a81;
-    min-height: 1000vh;
+    min-height: 90vh;
 `;
 
 export const Area = styled.div`

@@ -1,7 +1,6 @@
 import { useContext } from 'react';
 import { Route, Routes, Link } from 'react-router-dom';
 import { Home } from './Pages/Home/';
-import { Login } from './Pages/Login/login';
 import { Private } from './Pages/TodoList';
 
 //styles
@@ -10,6 +9,7 @@ import {
     Area, 
     Header,
     Navegation,
+    ButtonLogout,
 } from './App.styles';
 import { RequireAuth } from './contexts/Auth/RequireAuth';
 import { AuthContext } from './contexts/Auth/AuthContext';
@@ -19,9 +19,14 @@ function App() {
 
   const auth = useContext(AuthContext);
 
-  const handleLogout = async () => {
-    await auth.signout();
-    window.location.href = window.location.href;
+  //refash page
+  // const refrashItem = () => {
+  //   window.location.href = window.location.href;
+  // }
+
+  const handleLogout = () => {
+    auth.signout();
+    // refrashItem();
   }
 
   return (
@@ -29,9 +34,11 @@ function App() {
       <Area>
         <Header>
           <Navegation>
-            <Link to="/">Home</Link>
-            <Link to="/login">Lista de Tarefas</Link>
-            {auth.user && <button onClick={handleLogout}>Sair</button>}
+            {!auth.user ? <Link to="/">Home</Link> : ''}
+            <Link to="/login">
+              {auth.user ? 'Lista de Tarefas' : 'Login'}
+            </Link>
+            {auth.user && <ButtonLogout onClick={handleLogout}>Sair</ButtonLogout>}
           </Navegation>
         </Header>
       </Area>

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
     background-color: #17181f;
     color: #797a81;
-    min-height: 1000vh;
+    min-height: 100vh;
 `;
 
 export const Area = styled.div`
@@ -29,11 +29,17 @@ export const Navegation = styled.nav`
         color: white;
         text-decoration: none;
         display: center;
-        margin: 0px 5px 0px 5px;
+        margin: 0px 50px 0px 5px;
     }
 
     :hover {
         text-decoration: none;
         color: #ccc;
     }
+`;
+
+export const ButtonLogout = styled.button`
+    padding: 5px;
+    border-radius: 5px;
+    color: red;
 `;

@@ -1,6 +1,15 @@
+import {
+    Container, 
+    TextHome,
+    TextLogin,
+} from './styles';
+
 export const Home = () => {
     return(
-        <div>Home</div>
+        <Container>
+            <TextHome>Bem-vindo a sua lista de tarefas</TextHome>
+            <TextLogin>Faça o login para começar.</TextLogin>
+        </Container>
     );
 }
 
