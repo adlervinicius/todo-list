@@ -7,7 +7,7 @@
 export const useApi = () => ({
     validateToken: async (token: string) => {
         return {
-            user: { id: 3, name: 'Adler', email: 'adler.vinicius22gmail.com' }
+            user: { id: 1, name: 'Adler', email: 'adler.vinicius22gmail.com' }
         };
         // const response = await api.post('/validate', { token });
         // return response.data;

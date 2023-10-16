@@ -19,16 +19,22 @@ export const Private = () => {
   const auth = useContext(AuthContext)
   const [list, setList] = useState<Item[]>([]);
 
-  //function add new item list
-  const handleAddTask = (taskName: string) => {
-    let newList = [...list];
-    newList.push({
-      id: list.length + 1,
-      name: taskName,
-      done: false,
-    });
-    setList(newList);
-  }
+//function add new item list
+const handleAddTask = (taskName: string) => {
+  let newList = [...list];
+  newList.push({
+    id: list.length + 1,
+    name: taskName,
+    done: false,
+  });
+  setList(newList);
+}
+
+//função delete
+const handleRemoveItem = (deleteTodo: number) => {
+  const filterTodo = list.filter((list) => list.id !== deleteTodo);
+  setList(filterTodo);
+}
 
   //main
   return (
@@ -38,7 +44,7 @@ export const Private = () => {
         <h3>Olá {auth.user?.name}, comece agora sua lista de tarefas!</h3>
         <AddArea onEnter={handleAddTask} />
         {list.map((item, index)=>(
-          <ListItem key={index} item={item} />
+          <ListItem key={index} item={item} handleRemoveItem={() => handleRemoveItem(item.id)}/>
         ))}
       </Area>
     </Container>

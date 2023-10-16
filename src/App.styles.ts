@@ -41,5 +41,7 @@ export const Navegation = styled.nav`
 export const ButtonLogout = styled.button`
     padding: 5px;
     border-radius: 5px;
-    color: red;
+    background-color: #273746;
+    font-size: 14px;
+    color: #F2D7D5;
 `;

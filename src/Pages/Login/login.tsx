@@ -44,6 +44,10 @@ export const Login = () => {
         isLogin();
     }
 
+    const handleCreateAccout = () => {
+        navigate('/createaccount')
+    }
+
     //main
     return (
         <Container>
@@ -64,7 +68,8 @@ export const Login = () => {
                     placeholder="Digite sua senha"
                 />
                 <DivButton>
-                    <ButtonLogin onClick={handleLogin}>Logar</ButtonLogin>
+                    <ButtonLogin onClick={handleLogin}>Entrar</ButtonLogin>
+                    <ButtonLogin onClick={handleCreateAccout}>Criar conta</ButtonLogin>
                 </DivButton>
             </ContainerAreaLogin>
             

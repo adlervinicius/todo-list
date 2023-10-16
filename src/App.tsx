@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { Route, Routes, Link } from 'react-router-dom';
 import { Home } from './Pages/Home/';
 import { Private } from './Pages/TodoList';
+import { CreateAccountPage } from './Pages/CreateAccount/CrateAccount';
 
 //styles
 import { 
@@ -45,6 +46,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<RequireAuth><Private /></RequireAuth>} />
+        <Route path="/createaccount" element={<CreateAccountPage  />} />
       </Routes>
     </Container>
   );

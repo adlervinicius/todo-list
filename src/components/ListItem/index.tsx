@@ -1,5 +1,11 @@
 import { useState } from 'react';
-import { Container, TextLabel } from './styles';
+import { 
+    Container, 
+    TextLabel, 
+    ButtomDelete,
+    ContainerArea,
+    InputCheck,
+} from './styles';
 
 //style
 import { Item } from '../../types/item';
@@ -7,19 +13,25 @@ import { Item } from '../../types/item';
 //types
 type Props = {
     item: Item;
+    handleRemoveItem: any;
 }
 
-export const ListItem = ({ item }: Props) => {
+export const ListItem = ({ item, handleRemoveItem }: Props) => {
     const [isChecked, setIsChecked] = useState(item.done)
-    
+
     return (
-        <Container>
-            <input
-                type="checkbox"
-                checked={isChecked}
-                onChange={e => setIsChecked(e.target.checked)}
-            />
-            <TextLabel done={isChecked}>{item.name}</TextLabel>
-        </Container>
+        <ContainerArea>
+            <Container>
+                <text>{item.id}.</text>
+                <InputCheck
+                    type="checkbox"
+                    checked={isChecked}
+                    onChange={e => setIsChecked(e.target.checked)}
+                />
+                <TextLabel done={isChecked}>{item.name}</TextLabel>
+            </Container>
+            <ButtomDelete onClick={e => handleRemoveItem()}>Excluir</ButtomDelete>
+        </ContainerArea>
+        
     );
 }
